@@ -7,7 +7,7 @@ package windykacja;
 
 /**
  *
- * @author geeorge
+ * @author White-Soot
  */
 public class Windykacja {
 
