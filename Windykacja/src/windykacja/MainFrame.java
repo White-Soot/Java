@@ -150,7 +150,7 @@ public class MainFrame extends javax.swing.JFrame implements InternalFrameListen
     private void menuSzukajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSzukajActionPerformed
         JInternalFrame iframe = new JInternalFrame("szukaj");
         iframe.setLayout(new GridLayout());
-        iframe.add(new JPanel());
+        iframe.add(new SzukajPanel());
         iframe.addInternalFrameListener(this);
         iframe.setVisible(true);
         iframe.setClosable(true);
