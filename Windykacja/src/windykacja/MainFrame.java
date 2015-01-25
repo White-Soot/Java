@@ -35,9 +35,13 @@ public class MainFrame extends javax.swing.JFrame implements InternalFrameListen
         
     }
 
-    public MainFrame getMainFrame() {
+    public static MainFrame getMainFrame() {
         if(main == null) main = new MainFrame();
         return main;
+    }
+    
+    public DB getDB() {
+        return db;
     }
     
     /**

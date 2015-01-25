@@ -26,7 +26,7 @@ private long id_adres;
     public void loadData(DB db) throws SQLException{
         String query = "select * from dluznik where id = "+ id;
         db.query(query);
-        db.
+        dluznik_typ = (Long) db.getObject("dluznik_typ");
      }
 
     public Dluznik(long id, long dluznik_typ, long id_adres) {
@@ -35,6 +35,24 @@ private long id_adres;
         this.id_adres = id_adres;
     }
 
+    public void save(DB db) throws SQLException {
+        if(id <= 0) {
+            insert(db);
+        } else {
+            update(db);
+        }
+    }
+    
+    private void insert(DB db) throws SQLException {
+        String query = "insert into dluznik(dluznik_typ, id_adres) values ("+dluznik_typ+", "+id_adres+")";
+        db.updateQuery(query);
+    }
+    
+    private void update(DB db) throws SQLException {
+        String query = "update dluznik set dluznik_typ = "+dluznik_typ+",  id_adres = "+id_adres+" where id = "+id;
+        db.updateQuery(query);
+    }
+    
     /**
      * @return the id
      */
