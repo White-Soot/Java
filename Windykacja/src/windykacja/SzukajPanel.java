@@ -86,8 +86,8 @@ public class SzukajPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(peselLbl, gridBagConstraints);
 
-        imieTF.setMinimumSize(new java.awt.Dimension(120, 19));
-        imieTF.setPreferredSize(new java.awt.Dimension(120, 19));
+        imieTF.setMinimumSize(new java.awt.Dimension(120, 25));
+        imieTF.setPreferredSize(new java.awt.Dimension(120, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -95,8 +95,9 @@ public class SzukajPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel1.add(imieTF, gridBagConstraints);
 
-        nazwiskoTF.setMinimumSize(new java.awt.Dimension(120, 19));
-        nazwiskoTF.setPreferredSize(new java.awt.Dimension(120, 19));
+        nazwiskoTF.setMinimumSize(new java.awt.Dimension(120, 25));
+        nazwiskoTF.setName(""); // NOI18N
+        nazwiskoTF.setPreferredSize(new java.awt.Dimension(120, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -104,8 +105,8 @@ public class SzukajPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel1.add(nazwiskoTF, gridBagConstraints);
 
-        peselTF.setMinimumSize(new java.awt.Dimension(120, 19));
-        peselTF.setPreferredSize(new java.awt.Dimension(120, 19));
+        peselTF.setMinimumSize(new java.awt.Dimension(120, 25));
+        peselTF.setPreferredSize(new java.awt.Dimension(120, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;

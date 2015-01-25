@@ -33,7 +33,7 @@ public class DB implements Cloneable {
     private java.sql.ResultSetMetaData metaData;
     
     DB() throws SQLException {
-        conn = createConnection("jdbc:postgresql://localhost:5432/wind", "geeorge", "geeorge");
+        conn = createConnection("jdbc:postgresql://localhost:5432/wind", "admin", "admin");
     }
     
     DB(String url, String user, String password) throws SQLException {
