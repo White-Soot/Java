@@ -6,6 +6,7 @@
 package windykacja;
 
 import java.sql.SQLException;
+import java.util.Vector;
 
 
 /**
@@ -22,11 +23,18 @@ private long id_adres;
         this.id = id;
     }
     
+    private Dluznik() {
+        
+    };
+    
+    public void initData(DB db) {
+        dluznik_typ = (Long) db.getObject("dluznik_typ");
+    }
     
     public void loadData(DB db) throws SQLException{
         String query = "select * from dluznik where id = "+ id;
         db.query(query);
-        dluznik_typ = (Long) db.getObject("dluznik_typ");
+        initData(db);
      }
 
     public Dluznik(long id, long dluznik_typ, long id_adres) {
@@ -35,6 +43,18 @@ private long id_adres;
         this.id_adres = id_adres;
     }
 
+    public Vector<Dluznik> dluznikWhere(DB db, String where) throws SQLException {
+        String query = "select * from dluznik where "+where;
+        db.query(query);
+        Vector<Dluznik> dluznicy = new Vector<Dluznik>(db.getMaxRow());
+        while(db.next()) {
+            Dluznik d = new Dluznik();
+            initData(db);
+            dluznicy.add(d);
+        }
+        return  dluznicy;
+    }
+    
     public void save(DB db) throws SQLException {
         if(id <= 0) {
             insert(db);
