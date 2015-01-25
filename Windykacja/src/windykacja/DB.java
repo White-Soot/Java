@@ -7,6 +7,7 @@ package windykacja;
 
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
@@ -22,6 +23,7 @@ public class DB implements Cloneable {
     private java.util.List<Object[]> objectList;
     private String[] columnClass;
     private java.util.List<String[]> stringList;
+    private java.util.HashMap<String, Integer> columnNumber;
     
     private int maxRow;
     private int actualRow;
@@ -68,15 +70,24 @@ public class DB implements Cloneable {
             columnName[i] = metaData.getColumnName(i+1);
             columnClass[i] = metaData.getColumnClassName(i+1);
         }
-        objectList = new Vector<Object[]>(resultSet.getFetchSize());
+        maxRow = resultSet.getFetchSize();
+        objectList = new Vector<Object[]>(maxRow);
+        actualRow = -1;
+        columnNumber = new HashMap<String, Integer>(maxRow);
         while(resultSet.next()) { // wykona sie tyle samo razy co for(int i = 0; i<resuleSet.getFetchSize(); i++)
             Object[] objArr = new Object[columnName.length];
             for(int i = 0; i<objArr.length; i++) {
                 objArr[i] = resultSet.getObject(i+1);
+                columnNumber.put(columnName[i], i);
             }
             objectList.add(objArr);
         }
         // tu można zrobić czyszczenie poprzednich wyników 
+    }
+    
+    boolean next() {
+        actualRow++;
+        return actualRow < maxRow;
     }
     
     void updateQuery(String query) throws SQLException {
@@ -98,7 +109,8 @@ public class DB implements Cloneable {
     }
     
     Object getObject(String columnName) {
-        return null;
+        Object ret = objectList.get(actualRow)[columnNumber.get(columnName)];
+        return ret;
     }
     
     String[] getColumnNames() {
