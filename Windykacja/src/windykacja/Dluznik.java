@@ -13,14 +13,13 @@ import java.util.Vector;
  *
  * @author soot
  */
-public class Dluznik {
+public class Dluznik extends DBObject {
     
-private long id;
 private long dluznik_typ;
 private long id_adres;
 
     public Dluznik(long id) {
-        this.id = id;
+        setId(id);
     }
     
     private Dluznik() {
@@ -32,13 +31,13 @@ private long id_adres;
     }
     
     public void loadData(DB db) throws SQLException{
-        String query = "select * from dluznik where id = "+ id;
+        String query = "select * from dluznik where id = "+ getId();
         db.query(query);
         initData(db);
      }
 
     public Dluznik(long id, long dluznik_typ, long id_adres) {
-        this.id = id;
+        setId(id);
         this.dluznik_typ = dluznik_typ;
         this.id_adres = id_adres;
     }
@@ -55,42 +54,34 @@ private long id_adres;
         return  dluznicy;
     }
     
-    public void save(DB db) throws SQLException {
-        if(id <= 0) {
-            insert(db);
-        } else {
-            update(db);
-        }
-    }
-    
-    private void insert(DB db) throws SQLException {
-        String query = "insert into dluznik(dluznik_typ, id_adres) values ("+dluznik_typ+", "+id_adres+")";
-        db.updateQuery(query);
-    }
-    
-    private void update(DB db) throws SQLException {
-        String query = "update dluznik set dluznik_typ = "+dluznik_typ+",  id_adres = "+id_adres+" where id = "+id;
-        db.updateQuery(query);
+    /**
+     *
+     * @param db
+     * @throws SQLException
+     */
+    @Override
+    protected void insert(DB db) throws SQLException {
+        String query = "insert into dluznik(dluznik_typ, id_adres) values ("+dluznik_typ+", "+id_adres+") return id";
+        db.query(query);
+        setId((long) db.getObject("id"));
+        
     }
     
     /**
-     * @return the id
+     *
+     * @param db
+     * @throws SQLException
      */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(long id) {
-        this.id = id;
+    @Override
+    protected void update(DB db) throws SQLException {
+        String query = "update dluznik set dluznik_typ = "+dluznik_typ+",  id_adres = "+id_adres+" where id = "+getId();
+        db.updateQuery(query);
     }
 
     /**
      * @return the dluznik_typ
      */
-    public long getDluznik_typ() {
+    protected long getDluznik_typ() {
         return dluznik_typ;
     }
 

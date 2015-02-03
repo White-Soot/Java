@@ -54,9 +54,6 @@ public class MainFrame extends javax.swing.JFrame implements InternalFrameListen
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        toolBoxPanel = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        toolBox = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         desktop = new javax.swing.JDesktopPane();
@@ -70,30 +67,6 @@ public class MainFrame extends javax.swing.JFrame implements InternalFrameListen
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 300));
         getContentPane().setLayout(new java.awt.GridBagLayout());
-
-        toolBoxPanel.setBackground(new java.awt.Color(153, 204, 255));
-        toolBoxPanel.setMinimumSize(new java.awt.Dimension(50, 50));
-        toolBoxPanel.setPreferredSize(new java.awt.Dimension(50, 50));
-        toolBoxPanel.setLayout(new java.awt.GridLayout(1, 0));
-
-        jScrollPane2.setAutoscrolls(true);
-        jScrollPane2.setMinimumSize(new java.awt.Dimension(25, 25));
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(25, 25));
-
-        toolBox.setBackground(new java.awt.Color(153, 255, 255));
-        toolBox.setAutoscrolls(true);
-        toolBox.setMinimumSize(new java.awt.Dimension(25, 25));
-        toolBox.setPreferredSize(new java.awt.Dimension(25, 25));
-        toolBox.setLayout(new java.awt.GridBagLayout());
-        jScrollPane2.setViewportView(toolBox);
-
-        toolBoxPanel.add(jScrollPane2);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        getContentPane().add(toolBoxPanel, gridBagConstraints);
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -164,10 +137,10 @@ public class MainFrame extends javax.swing.JFrame implements InternalFrameListen
         p.setPreferredSize(new Dimension(30, 30));
         p.setBackground(Color.GREEN);
         p.add(new javax.swing.JLabel(""+countPanel));
-        toolBox.add(p);
-        toolBox.revalidate();
+        //toolBox.add(p);
+        //toolBox.revalidate();
         desktop.add(iframe, p.getName());
-        System.err.println("size: "+toolBox.getSize());
+        //System.err.println("size: "+toolBox.getSize());
     }//GEN-LAST:event_menuSzukajActionPerformed
 
     private void menuWyjdzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuWyjdzActionPerformed
@@ -177,7 +150,7 @@ public class MainFrame extends javax.swing.JFrame implements InternalFrameListen
     private void menuDodajSpraweActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDodajSpraweActionPerformed
         JPanel p = new JPanel();
 //        p.setMinimumSize(new Dimension);
-        toolBox.add(p);
+        //toolBox.add(p);
     }//GEN-LAST:event_menuDodajSpraweActionPerformed
 
     /**
@@ -221,14 +194,11 @@ public class MainFrame extends javax.swing.JFrame implements InternalFrameListen
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenuItem menuDodajSprawe;
     private javax.swing.JMenuItem menuDodajZleceniodawce;
     private javax.swing.JMenuItem menuSzukaj;
     private javax.swing.JMenuItem menuWyjdz;
     private javax.swing.JMenu opcje;
-    private javax.swing.JPanel toolBox;
-    private javax.swing.JPanel toolBoxPanel;
     // End of variables declaration//GEN-END:variables
 
     @Override
